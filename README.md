@@ -1,14 +1,14 @@
 # Projeto: Tratador de Arquivos CSV
 
 ### Versão: 1.0
+
 ### Status: Em desenvolvimento
 
 1. Visão Geral do Projeto
 
+### Criar um ambiente
 
-### Criar um ambiente 
-
-No terminal bashdo VScode execute o  comando:
+No terminal bashdo VScode execute o comando:
 
 ```bash
 python -m venv .venv
@@ -69,12 +69,20 @@ project/
 ├── instance/
 │   └── config.py                # Configurações locais (git-ignore)
 │
-├── csv_handler.py        # Arquivo para rodar a aplicação
+├── csv_handler_run.py        # Arquivo para rodar a aplicação
 ├── requirements.txt
 └── README.md
 
 ```
 
+### Facilitadores para ambiente de desenvolvimento:
+
+O Livereload é um recurso que proporciona atualização automática do navegador durante o desenvolvimento, sempre que alterações são feitas no código ou nos templates. Isso aprimora o fluxo de trabalho de desenvolvimento, eliminando a necessidade de atualizações manuais do navegador.
+Instale o livereload com pip:
+
+```bash
+pip install livereload
+```
 
 
 ### Bibliografia
@@ -82,3 +90,4 @@ project/
 - https://flask.palletsprojects.com/en/stable/installation/
 - https://kinsta.com/pt/blog/aplicativo-python-flask/
 - https://jinja.palletsprojects.com/en/stable/templates/
+- https://livereload.readthedocs.io/en/latest/integrations/flask.html
