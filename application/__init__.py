@@ -1,4 +1,10 @@
 from flask import Flask
 
-app = Flask(__name__)
-from application import routes
+def create_app():
+    app = Flask(__name__, instance_relative_config=True )
+    
+    from application.routes import main_blueprint    
+    
+    app.register_blueprint(main_blueprint)
+
+    return app
