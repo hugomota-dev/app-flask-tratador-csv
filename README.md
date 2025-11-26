@@ -81,4 +81,4 @@ project/
 
 - https://flask.palletsprojects.com/en/stable/installation/
 - https://kinsta.com/pt/blog/aplicativo-python-flask/
-
+- https://jinja.palletsprojects.com/en/stable/templates/
