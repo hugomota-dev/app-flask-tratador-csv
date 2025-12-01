@@ -13,7 +13,8 @@ if __name__ == "__main__":
     server = Server(app)
 
     server.watch("application/__init__.py")
-    server.watch("application/routes.py")
+    server.watch("application/main_routes.py")
+    server.watch("application/csv_handler_routes.py")
     server.watch("application/templates/")
     server.watch("application/static/")
     server.serve(

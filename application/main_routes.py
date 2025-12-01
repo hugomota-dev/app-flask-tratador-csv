@@ -8,7 +8,3 @@ main_blueprint = Blueprint('main', __name__)
 @main_blueprint.route('/index')
 def index():
     return render_template('index.html')
-
-@main_blueprint.route('/select_columns')
-def select_columns():
-    return render_template('select_columns.html')
