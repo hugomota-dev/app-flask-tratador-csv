@@ -1,14 +1,17 @@
 from application import create_app
 
 import os
-from livereload import Server
+
 
 if __name__ == "__main__":
     app = create_app()
 
     app.debug = True
 
+    from livereload import Server
+
     server = Server(app)
+
     server.watch("application/__init__.py")
     server.watch("application/routes.py")
     server.watch("application/templates/")
