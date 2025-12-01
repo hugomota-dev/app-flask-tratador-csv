@@ -4,41 +4,13 @@
 
 ### Status: Em desenvolvimento
 
-1. Visão Geral do Projeto
+## 1. Visão Geral do Projeto
 
-### Criar um ambiente
+Este projeto utiliza Flask com uma estrutura de *Application Factory* e integração de *frontend* moderna via Tailwind CSS v4.x e PostCSS.
 
-No terminal bashdo VScode execute o comando:
+### 1.1 Estrutura de Pastas e Arquivos
 
-```bash
-python -m venv .venv
-```
-
-### Ative o ambiente virtual
-
-Antes de começar a trabalhar no projeto, ative o ambiente virtual que você criou:
-
-```bash
-. .venv/Scripts/activate
-```
-
-### Instale o Flask
-
-Dentro do ambiente virtual, use o seguinte comando para instalar o Flask:
-
-```bash
-pip install Flask
-```
-
-### Instale a pacote python-dotenv
-
-Esse pacote permitirá usar variáveis de ambiente no projeto:
-
-```bash
-pip install python-dotenv
-```
-
-### Estrutura de pastas e arquivos. Usando o aplicativo como pacote.
+A estrutura do projeto é organizada de forma modular (ou pacote):
 
 ```csharp
 project/
@@ -75,14 +47,135 @@ project/
 
 ```
 
-### Facilitadores para ambiente de desenvolvimento:
+## 2. Configuração do Ambiente Python (Backend)
 
-O Livereload é um recurso que proporciona atualização automática do navegador durante o desenvolvimento, sempre que alterações são feitas no código ou nos templates. Isso aprimora o fluxo de trabalho de desenvolvimento, eliminando a necessidade de atualizações manuais do navegador.
-Instale o livereload com pip:
+Esta seção aborda a configuração do ambiente virtual e as dependências Python.
+
+### 2.1 Criar e Ativar um Ambiente Virtual
+
+No terminal (usando Bash ou PowerShell no VS Code), execute o comando para criar o ambiente virtual chamado `.venv`:
 
 ```bash
-pip install livereload
+python -m venv .venv
 ```
+
+Antes de começar a trabalhar no projeto, ative o ambiente virtual:
+```bash
+# Para Linux/macOS ou terminal bash (meu uso no VScode)
+. .venv/Scripts/activate
+
+# Para Windows (Command Prompt)
+.venv\Scripts\activate
+```
+
+### 2.2 Criar e Ativar um Ambiente Virtual
+Dentro do ambiente virtual, instale o Flask e as bibliotecas auxiliares:
+```bash
+pip install Flask python-dotenv livereload
+```
+
+### 2.3 Gerar o Arquivo de Requisitos
+Após instalar todas as dependências Python, use este comando para gerar o arquivo requirements.txt que lista exatamente quais pacotes seu projeto precisa:
+
+```bash
+pip freeze > requirements.txt
+```
+
+## 3. Configuração do Frontend (Tailwind CSS v4.x via PostCSS)
+
+Esta seção configura as ferramentas de frontend usando Node.js e NPM.
+
+### 3.1 Inicializar o NPM e Instalar Dependências do Tailwind
+Execute este comando na raiz do seu projeto para criar o arquivo package.json e instalar os pacotes necessários:
+```bash
+npm init -y
+npm install -D tailwindcss@next @tailwindcss/postcss postcss autoprefixer @tailwindcss/cli concurrently
+```
+
+### 3.2 Criar Arquivos de Configuração Manuais (Formato .mjs)
+
+Crie manualmente os arquivos tailwind.config.mjs e postcss.config.mjs na raiz do seu projeto.
+Crie tailwind.config.mjs:
+
+```bash
+// tailwind.config.mjs
+export default {
+  content: [
+    "./application/templates/**/*.html",
+    "./application/static/src/**/*.{js,ts}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+```
+
+Crie postcss.config.mjs:
+```bash
+// postcss.config.mjs
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+```
+
+### 3.3 Criar Arquivo de Entrada CSS
+Crie o diretório application/static/src/ e o arquivo CSS de entrada:
+Crie o arquivo application/static/src/input.css:
+
+```bash
+/* application/static/src/input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+```
+
+## 4. Orquestração e Execução do Projeto
+
+Esta seção configura os scripts para rodar o servidor Flask e o compilador Tailwind simultaneamente.
+
+### 4.1 Configurar Scripts no package.json
+Edite o arquivo package.json (criado no Passo 3.1) para adicionar os scripts de compilação do CSS e o script dev que usa concurrently.
+
+```bash
+{
+  # ... (outras chaves) ...
+  "scripts": {
+    "build:css": "tailwindcss --input application/static/src/input.css --output application/static/dist/output.css",
+    "watch:css": "tailwindcss --input application/static/src/input.css --output application/static/dist/output.css --watch",
+    "start:flask": "python csv_handler_run.py",
+    
+    # NOVO: Script principal que roda ambos simultaneamente
+    "dev": "concurrently \"npm run start:flask\" \"npm run watch:css\""
+  },
+  # ... (devDependencies atualizadas) ...
+}
+
+```
+
+### 4.2 Vincular o CSS Compilado no Template Flask
+
+Atualize seu template base (application/templates/base.html) para garantir que ele aponte para o arquivo de saída compilado (output.css).
+
+
+```html
+<!-- ... dentro do <head> ... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
+    <!-- ... -->
+```
+
+### 4.3 Iniciar o Ambiente de Desenvolvimento
+
+Abra seu terminal na raiz do projeto e inicie ambos os processos com um único comando:
+```bash
+npm run dev
+```
+
 
 
 ### Bibliografia
