@@ -6,7 +6,7 @@
   "scripts": {
     "build:css": "tailwindcss --input application/static/src/input.css --output application/static/dist/output.css",
     "watch:css": "tailwindcss --input application/static/src/input.css --output application/static/dist/output.css --watch",
-    "start:flask": "python csv_handler_run.py",
+    "start:flask": "python run.py",
     "dev": "concurrently \"npm run start:flask\" \"npm run watch:css\""
   },
   "repository": {

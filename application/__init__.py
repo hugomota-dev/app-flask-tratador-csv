@@ -3,11 +3,11 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
+    
+    app.config['SECRET_KEY'] = 'jduAjlkf&2j4FmtGDj3!@#E4k3nD9$z'
 
-    from application.main_routes import main_blueprint
-    from application.csv_handler_routes import csv_blueprint
-
-    app.register_blueprint(main_blueprint)
-    app.register_blueprint(csv_blueprint)
+    from .routes import main_bp
+    app.register_blueprint(main_bp)
+    
 
     return app
