@@ -3,32 +3,44 @@
 
 {% block content %}
 <div class="w-full max-w-2xl mx-auto">
-  <div class="bg-white rounded-lg shadow-sm p-8">
+  <div id="upload-wrapper" class="bg-white rounded-lg shadow-sm p-8">
 
-    <form id="form-upload-csv"
-      class="bg-white text-center transition-colors"
-      action="" method="POST">
-      <label id="label-upload-csv" for="csv-upload" class="border-gray-300 hover:border-gray-400 border-2 border-dashed rounded-lg block text-sm font-medium text-gray-700 cursor-pointer p-12">
+    <form id="form-upload-csv" class="bg-white text-center transition-colors" action="" method="POST">
+
+      <label id="label-upload-csv"
+        class="label-upload is-default border-2 border-dashed rounded-lg block text-sm font-medium text-gray-700 cursor-pointer p-12 transition-colors">
+
         <div class="flex justify-center">
-          <svg id="upload-status-icon" class="mx-auto h-12 w-12 mb-4 text-current" xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload-icon lucide-upload">
+          <svg class="upload-icon mx-auto h-12 w-12 mb-4 text-current" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
             <path d="M12 3v12" />
             <path d="m17 8-5-5-5 5" />
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
           </svg>
         </div>
+
         <input type="file" id="csv-upload" name="csv-upload" onchange="displayUploadChanger()" accept=".csv"
           class="hidden" />
-        <span id="span-text" class="text-sm font-medium text-gray-600">Arraste e solte seu arquivo aqui, ou clique para selecionar um arquivo. Suportado: .csv | Tamanho máximo: 5MB</span><br>
-        <span id="file-name" class="text-sm mt-2 text-gray-600 truncate max-w-full">Nenhum arquivo selecionado</span>
 
+        <span id="span-text" class="text-sm font-medium text-gray-600">
+          Arraste e solte seu arquivo aqui, ou clique para selecionar um arquivo.
+          Suportado: .csv | Tamanho máximo: 5MB
+        </span>
+
+        <br>
+
+        <span id="file-name" class="text-sm mt-2 truncate max-w-full">
+          Nenhum arquivo selecionado
+        </span>
 
       </label>
+
     </form>
-    <div class="mt-6 flex justify-end">
+
+    <div id="button_box" class="button-upload is-default mt-6 flex justify-end">
       <button id="button-form-csv" type="submit"
-        class="lg:px-6 px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-700 transition-colors cursor-pointer">
+        class="px-6 py-2 rounded-md text-white transition-colors ">
         Enviar Arquivo
       </button>
     </div>

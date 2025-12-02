@@ -1,2 +1,43 @@
 /* application/static/src/input.css */
 @import "tailwindcss";
+
+/* Custom styles for file input */
+/* postcss */
+
+/* —— ESTADO DEFAULT —— */
+.label-upload.is-default {
+  @apply border-gray-300 hover:border-gray-400;
+}
+
+.label-upload.is-default .upload-icon {
+  @apply text-gray-400;
+}
+
+.label-upload.is-default #file-name {
+  @apply text-amber-800;
+}
+
+#upload-wrapper.is-default #button-form-csv {
+  @apply bg-gray-400 hover:bg-gray-500 cursor-not-allowed;
+}
+
+/* —— ESTADO UPLOADED —— */
+.label-upload.is-uploaded {
+  @apply border-green-600 hover:border-green-400;
+}
+
+.label-upload.is-uploaded .upload-icon {
+  @apply text-green-600;
+}
+
+.label-upload.is-uploaded #file-name {
+  @apply font-bold text-green-800;
+}
+
+.label-upload.is-uploaded #span-text {
+  @apply hidden;
+}
+
+#upload-wrapper.is-uploaded #button-form-csv {
+  @apply bg-green-600 hover:bg-green-800 cursor-pointer;
+}
