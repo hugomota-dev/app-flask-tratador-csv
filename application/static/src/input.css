@@ -17,7 +17,7 @@
   @apply text-amber-800;
 }
 
-#upload-wrapper.is-default #button-form-csv {
+.button-box.is-default #button-form-csv {
   @apply bg-gray-400 hover:bg-gray-500 cursor-not-allowed;
 }
 
@@ -38,6 +38,6 @@
   @apply hidden;
 }
 
-#upload-wrapper.is-uploaded #button-form-csv {
+.button-box.is-uploaded .button-form {
   @apply bg-green-600 hover:bg-green-800 cursor-pointer;
 }

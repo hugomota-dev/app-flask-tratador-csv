@@ -2,7 +2,7 @@ function displayUploadChanger() {
     const fileInput = document.getElementById('csv-upload');
     const label = document.getElementById('label-upload-csv');
     const fileNameDisplay = document.getElementById('file-name');
-    const wrapper = document.getElementById('upload-wrapper');
+    const wrapper = document.getElementById('button-box');
 
     if (fileInput.files?.length > 0) {
         const fileName = fileInput.files[0].name;
